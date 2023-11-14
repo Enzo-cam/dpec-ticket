@@ -1,8 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ticket Management Web App for DPEC's Systems Area
+
+This is a Next.js project developed as a ticket management application for the Systems Area of DPEC. It's bootstrapped with [create-next-app](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Overview
+
+The application facilitates the creation, tracking, and management of tickets within the organization. It allows various departments to raise issues and have them assigned to the appropriate teams for resolution.
 
 ## Getting Started
 
-First, run the development server:
+### Running the Development Server:
+
+To start the development server, use one of the following commands:
 
 ```bash
 npm run dev
@@ -12,23 +20,28 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Access the application by navigating to [http://localhost:3000](http://localhost:3000) in your browser. You will see the live updates as you edit the files.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Editing the Application:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Main editing can be done in `app/page.tsx`.
+- The application features live updates as you edit the files.
+
+## Features
+
+- **Ticket Creation and Assignment:** Streamlined process for raising and assigning tickets to relevant departments.
+- **Font Optimization:** Utilizes [next/font](https://nextjs.org/docs/basic-features/font-optimization) for efficient loading of the custom Google Font, Inter.
+- **User-Friendly Interface:** Easy to navigate UI for an efficient ticket management experience.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs) - Discover more about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - An interactive tutorial to get hands-on experience with Next.js.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Your feedback and contributions to [the Next.js GitHub repository](https://github.com/vercel/next.js/) are greatly appreciated!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Deploying the App
 
-## Deploy on Vercel
+Deploy your Next.js application easily on the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme), straight from the creators of Next.js.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+For detailed instructions, visit our [Next.js deployment documentation](https://nextjs.org/docs/deployment).
