@@ -5,7 +5,7 @@ const DeleteBlock = () => {
     return (
         <FontAwesomeIcon 
             icon={faX}
-            className='text-red-500 hover:cursor-pointer hover:text-red-700'
+            className='text-red-500 hover:cursor-pointer hover:text-red-700 text-base'
         />
     )
 }
