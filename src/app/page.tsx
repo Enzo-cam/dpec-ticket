@@ -8,7 +8,8 @@ const getTickets = async (): Promise<ITicket[] | undefined> => {
     const res = await fetch("/api/ticket", {
       cache: "no-store",
     });
-    return res.json();
+    const data = await res.json();
+    return data.tickets;
   } catch (error) {
     console.log("Fallo en obtener los tickets: ", error);
   }
@@ -29,21 +30,34 @@ const Home = () => {
   }, []);
 
 
-  // const uniqueCategories = [
-  //   ...new Set(tickets?.map(({ category }) => category)),
-  // ];
+  const uniqueCategories = [
+    ...new Set(tickets?.map(({ category }) => category)),
+  ];
 
-  console.log("Probando")
+  console.log("Probando" + tickets)
   console.log(tickets)
 
   return (
     <div className="p-5">
       <div className="lg:grid grid-cols-2 xl:grid-cols-4">
-        <TicketCard />
-
-        <TicketCard />
-        <TicketCard />
-        <TicketCard />
+        {
+          tickets && uniqueCategories?.map((uniqCategory, catIndex) => (
+            <div key={catIndex} className='mb-4'>
+              <h2>{uniqCategory}</h2>
+              <div>
+                {tickets.filter((ticket) => ticket.category === uniqCategory).map((filterTicket, _index) => (
+                  <TicketCard 
+                    // id={_index}
+                    key={_index}
+                    ticket={filterTicket}
+                  />
+                ))}
+              </div>
+            </div>
+          ))
+        }
+        {/* <TicketCard />
+        <TicketCard /> */}
       </div>
     </div>
   );
