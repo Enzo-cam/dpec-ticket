@@ -7,16 +7,19 @@ import { formatISODate } from "@/helpers/constants";
 
 type TicketCardProps = {
   ticket: ITicket;
+  deleteTicket: (id: string) => void;
 };
 
-const TicketCard: React.FC<TicketCardProps> = ({ticket}) => {
+const TicketCard: React.FC<TicketCardProps> = ({ticket, deleteTicket}) => {
   return (
     <div className="flex flex-col bg-card hover:bg-card-hover rounded-md shadow-lg p-3 m-2">
     
       <div className="flex items-center mb-1">
         <PriorityDisplay priority={ticket.priority} />
         <div className="ml-auto">
-          <DeleteBlock />
+          <button onClick={() => deleteTicket(ticket._id)}>
+            <DeleteBlock />
+          </button>
         </div>
       </div>
 

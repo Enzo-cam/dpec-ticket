@@ -3,29 +3,40 @@ import {useState, useEffect} from 'react'
 import TicketCard from "@/Components/TicketCard";
 import { ITicket } from "@/Interfaces/ITicket";
 
-const getTickets = async (): Promise<ITicket[] | undefined> => {
-  try {
-    const res = await fetch("/api/ticket", {
-      cache: "no-store",
-    });
-    const data = await res.json();
-    return data.tickets;
-  } catch (error) {
-    console.log("Fallo en obtener los tickets: ", error);
-  }
-};
+
+
 
 const Home = () => {
   const [tickets, setTickets] = useState<ITicket[]>([]);
+  
+
+  const getTickets = async (): Promise<ITicket[] | undefined> => {
+    try {
+      const res = await fetch("/api/ticket", {
+        cache: "no-store",
+      });
+      const data = await res.json();
+      return data.tickets;
+    } catch (error) {
+      console.log("Fallo en obtener los tickets: ", error);
+    }
+  };
+
+  const fetchTickets = async () => {
+    const fetchedTickets = await getTickets();
+    if (fetchedTickets) {
+      setTickets(fetchedTickets);
+    }
+  };
+
+  const deleteTicket = async (id: string) => {
+    const res = await fetch(`/api/ticket/${id}`, { method: 'DELETE' });
+    if (res.ok) {
+      await fetchTickets(); // Vuelve a obtener los tickets después de eliminar
+    }
+  };
 
   useEffect(() => {
-    const fetchTickets = async () => {
-      const fetchedTickets = await getTickets();
-      if (fetchedTickets) {
-        setTickets(fetchedTickets);
-      }
-    };
-
     fetchTickets();
   }, []);
 
@@ -33,8 +44,6 @@ const Home = () => {
   const uniqueCategories = [
     ...new Set(tickets?.map(({ category }) => category)),
   ];
-
-  console.log("Probando" + tickets)
   console.log(tickets)
 
   return (
@@ -48,6 +57,7 @@ const Home = () => {
                 {tickets.filter((ticket) => ticket.category === uniqCategory).map((filterTicket, _index) => (
                   <TicketCard 
                     // id={_index}
+                    deleteTicket={deleteTicket}
                     key={_index}
                     ticket={filterTicket}
                   />

@@ -20,9 +20,9 @@ export async function POST(req: NextRequest) {
 }
 
 export async function GET() {
-    await dbConnect();
-    
-    try {
+  await dbConnect();
+
+  try {
     const tickets = await Ticket.find().maxTimeMS(20000); // Aumentar a 20000 ms, por ejemplo
     return NextResponse.json({ tickets }, { status: 200 });
   } catch (error) {
@@ -38,5 +38,3 @@ export async function GET() {
 }
 
 
-
-  
