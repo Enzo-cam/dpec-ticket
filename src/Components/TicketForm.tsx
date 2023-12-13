@@ -3,7 +3,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ITicket } from "@/Interfaces/ITicket";
 
-const TicketForm = () => {
+type TicketFormProps = {
+  ticket: ITicket;
+}
+
+const TicketForm: React.FC<TicketFormProps> = ({ticket}) => {
   const router = useRouter()
 
   const ticketData: ITicket = {

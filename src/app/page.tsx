@@ -4,8 +4,6 @@ import TicketCard from "@/Components/TicketCard";
 import { ITicket } from "@/Interfaces/ITicket";
 
 
-
-
 const Home = () => {
   const [tickets, setTickets] = useState<ITicket[]>([]);
   
@@ -44,7 +42,6 @@ const Home = () => {
   const uniqueCategories = [
     ...new Set(tickets?.map(({ category }) => category)),
   ];
-  console.log(tickets)
 
   return (
     <div className="p-5">
